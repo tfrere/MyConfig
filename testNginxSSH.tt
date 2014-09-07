@@ -1,23 +1,24 @@
 server {
-        listen   80;
-        server_name  mondomaine.com *.mondomaine.com;
+    listen   443;
+    server_name  mondomaine.com *.mondomaine.com;
 
-        access_log  /var/www/mondomaine.com/logs/nginx_access.log vhosts;
-        error_log  /var/www/mondomaine.com/logs/nginx_error.log;
+    access_log  /var/www/mondomaine.com/logs/nginx_access.log vhosts;
+    error_log  /var/www/mondomaine.com/logs/nginx_error.log;
+
+    root   /var/www/mondomaine.com/www/;
+
+########## SSL Directives
+    ssl  on;
+    ssl_certificate  /var/www/mondomaine.com/config/mondomaine.com.pem;
+    ssl_certificate_key  /var/www/mondomaine.com/config/mondomaine.com.pem;
+    ssl_session_timeout  5m;
+    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    ssl_prefer_server_ciphers   on;
 
     ########## Rewrite rules 1 ##########
         if ($host ~* ^mondomaine\.com$) {
             rewrite ^(.*) //www.mondomaine.com$1 permanent;
-            break;
-        }
-
-    ########## Rewrite rules 2 ##########
-        if ($host !~* ^www\.mondomaine\.com$) {}
-        if ($host ~* ^(.*).mondomaine\.com$) {
-            set $ssl_subdomain $1;
-        }
-        if (-e /var/www/mondomaine.com/config/ssl/$ssl_subdomain) {
-            rewrite ^(.*) https://$ssl_subdomain.mondomaine.com$1 permanent;
             break;
         }
 
@@ -61,21 +62,11 @@ server {
         location ~* /auth {
             root   /var/www/mondomaine.com/www/;
             auth_basic            "Restricted";
-            auth_basic_user_file  /var/www/mondomaine.com/config/passwords;
+            auth_basic_user_file  /home/www/mondomaine.com/config/passwords;
         }
 
     location / {
         root   /var/www/mondomaine.com/www/;
         index  index.html index.htm;
-    }
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   /var/www/nginx-default;
-    }
-    # deny access to .htaccess files, if Apache's document root
-    # concurs with nginx's one
-    #
-    location ~ /\.ht {
-        deny  all;
     }
 }
