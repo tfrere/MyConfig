@@ -55,12 +55,22 @@ printf "\n[Install Nginx]...\n"
 
 sudo apt-get install nginx
 
+printf "\n[Install PHP && Mysql]...\n"
+
+php5 php-cli php-fpm
+fastcgi config
+
+
+printf "\n[Install owncloud]...\n"
+
+echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/Debian_7.0/ /' >> /etc/apt/sources.list.d/owncloud.list
+apt-get update
+apt-get install owncloud
+
+
 printf "\n[Install Ruby]...\n"
 
 sudo apt-get install ruby
-
-printf "\n[Install PHP && Mysql]...\n"
-
 
 '
 
