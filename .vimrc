@@ -43,3 +43,9 @@
  let OmniCpp_MayCompleteArrow = 1
  let OmniCpp_MayCompleteScope = 1
  let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
