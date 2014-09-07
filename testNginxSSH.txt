@@ -1,0 +1,23 @@
+server {
+    listen   443;
+    server_name  mondomaine.com *.mondomaine.com;
+
+    access_log  /var/www/mondomaine.com/logs/nginx_access.log vhosts;
+    error_log  /var/www/mondomaine.com/logs/nginx_error.log;
+
+    root   /var/www/mondomaine.com/www/;
+
+########## SSL Directives
+    ssl  on;
+    ssl_certificate  /var/www/mondomaine.com/config/mondomaine.com.pem;
+    ssl_certificate_key  /var/www/mondomaine.com/config/mondomaine.com.pem;
+    ssl_session_timeout  5m;
+    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+    ssl_prefer_server_ciphers   on;
+
+    location / {
+        root   /var/www/mondomaine.com/www/;
+        index  index.html index.htm;
+    }
+}

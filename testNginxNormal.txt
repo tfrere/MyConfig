@@ -1,0 +1,22 @@
+server {
+    listen   80;
+    server_name  mondomaine.com *.mondomaine.com;
+
+    access_log  /var/www/mondomaine.com/logs/nginx_access.log vhosts;
+    error_log  /var/www/mondomaine.com/logs/nginx_error.log;
+
+    location / {
+        root   /var/www/mondomaine.com/www/;
+        index  index.html index.htm;
+    }
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /var/www/nginx-default;
+    }
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    location ~ /\.ht {
+        deny  all;
+    }
+}
