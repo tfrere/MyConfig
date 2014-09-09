@@ -73,5 +73,3 @@ printf "\n[Install Ruby]...\n"
 sudo apt-get install ruby
 
 '
-
-
