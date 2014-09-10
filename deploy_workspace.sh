@@ -1,7 +1,5 @@
 #!/n/bash
 
-:'
-
 printf "\n[Base config]...\n"
 
 apt-get update
@@ -13,11 +11,21 @@ apt-get install htop
 apt-get install vim
 apt-get install git
 
-mv .bashrc ../
-mv .vimrc ../
-source ../.bashrc
+cp .bashrc ~/
+cp .vimrc ~/
+cp -rf .vim ~/
+source ~/.bashrc
 
 git config --global user.name "tfrere"
 git config --global user.email tfrere@student.42.fr
 
-'
+groupadd wheel
+useradd wheel tfrere
+passwd tfrere
+mkdir /home/wheel
+mkdir /home/wheel/tfrere
+cp .bashrc /home/wheel/tfrere
+cp .vimrc /home/wheel/tfrere
+cp -rf .vim /home/wheel/tfrere
+source /home/wheel/tfrere/.bashrc
+

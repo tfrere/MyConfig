@@ -39,27 +39,6 @@ colorscheme mustang		" Enable mustang theme
 highlight LineNr ctermbg=234 ctermfg=239
 "highlight CursorLine term=underline cterm=None ctermbg=234
 
-" == Vundle (PLUGINS MANAGER) ==
-filetype off							" Required for vundle
-set runtimepath+=~/.vim/bundle/vundle/	" Vundle setup
-call vundle#rc()						" Vundle setup
-Bundle 'gmarik/vundle'
-"Bundle 'ctrlp.vim'
-"Bundle 'fugitive.vim'
-"Bundle 'taglist-plus'
-"Bundle 'neocomplcache'
-filetype plugin indent on				" Required for vundle
-
-" == Syntastic customizations ==
-"let g:syntastic_c_check_header = 1
-"let g:syntastic_c_auto_refresh_includes = 1
-" let b:syntastic_c_cflags = '-I./includes'
-let g:syntastic_c_include_dirs = [ 'headers', 'includes', 'libft/includes' ]
-let g:syntastic_disabled_filetypes=['o', 'a']
-
-" == Lokaltog customisation ==
-set laststatus=2					" Always show status line
-
 " == Auto .h protect ==
 function! s:insert_gates()
 let getname = substitute(toupper(expand("%:t")), "\\.", "_", "g")

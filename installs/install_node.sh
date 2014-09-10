@@ -2,10 +2,10 @@ printf "\n[Install Node && NPM]...\n"
 
 mkdir ~/node-latest-install
 cd ~/node-latest-install
-curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
+sudo curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
 ./configure --prefix=~/local
-make install
-curl https://www.npmjs.org/install.sh | sh
+sudo make install
+sudo curl https://www.npmjs.org/install.sh | sh
 rm -rf ~/node-latest-install
 
 npm install -g grunt-cli
