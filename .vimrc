@@ -1,51 +1,117 @@
+" == Common settings ==
+set nocompatible		" Disable vi compatibility
+set title				" Display filename in title bar
+set number				" Show line number
+set ruler				" Show cursor position
+set showcmd				" Show incomplete command
+syntax on				" Syntax coloration
 
-" Global settings
- set nocompatible
- syntax on
- set hlsearch
- set shiftwidth=2
- set background=dark
- set cursorline
- inoremap <S-Tab> <C-V><Tab>
- set showmatch
- set tabstop=4 softtabstop=4 shiftwidth=4
- set mouse=a
-"
-" " Show line number
- set number
- highlight LineNr term=bold ctermfg=darkgray guifg=darkgray
-"
-" " Special configuration for devel
- filetype on
- filetype plugin on
- set ofu=syntaxcomplete#Complete
- autocmd FileType c,cpp,cxx,h,fl,php set cindent|set cino=:0
- autocmd FileType make setlocal noexpandtab
-"
-" " Show when a line exceeds 80 chars
- au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
-"
-" " Highlight Tabs and Spaces
- au BufWinEnter * let w:m2=matchadd('Tab', '\t', -1)
- au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
- set list listchars=tab:»-,trail:·
- highlight Tab ctermbg=darkgray guibg=darkgray
- highlight Space ctermbg=darkblue guibg=darkblue
- highlight OverLength ctermbg=red ctermfg=white guibg=#592929
- match OverLength /\%81v.*/
-"
-" " OmniCppComplete
- let OmniCpp_NamespaceSearch = 1
- let OmniCpp_GlobalScopeSearch = 1
- let OmniCpp_ShowAccess = 1
- let OmniCpp_ShowPrototypeInAbbr = 1
- let OmniCpp_MayCompleteDot = 1
- let OmniCpp_MayCompleteArrow = 1
- let OmniCpp_MayCompleteScope = 1
- let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" == Cursor ==
+set mouse=a				" Enable mouse support
+set cursorline			" Show cursorline
+"set nowrap				" Don't wrap text on multiple lines
+set scrolloff=7			" Display minimum X lines around the cursor
+"set sidescrolloff=5		" Display minimum X columns around the cursor
+
+" == Indentation ==
+set noexpandtab			" Disable tab to spaces
+set autoindent			" Same indent as previous lines
+set smartindent			" Auto-indentation in while, if, etc...
+set tabstop=4			" 4 column by tab
+set shiftwidth=4		" Auto-indent with 4 columns
+set softtabstop=4		" 4 column by tab
+
+" == Vim menu ==
+set wildmenu			" Enhance vim menu completion
+set wildignore+=*/tmp/*,*.so,*.swp,*.a,a.out,*.o,*~,*.pyc
+
+" == Search ==
+set history=500			" 500 command line history
+set ignorecase			" Ignore case in search
+set smartcase			" Don't ignore case when capitale is typed
+set incsearch			" Highlight typed word during typing
+set hlsearch			" Highlight typed word
+
+" == Theme ==
+"colorscheme desert		" Enable desert theme
+colorscheme mustang		" Enable mustang theme
+"highlight Normal ctermfg=white
+highlight LineNr ctermbg=234 ctermfg=239
+"highlight CursorLine term=underline cterm=None ctermbg=234
+
+" == Vundle (PLUGINS MANAGER) ==
+filetype off							" Required for vundle
+set runtimepath+=~/.vim/bundle/vundle/	" Vundle setup
+call vundle#rc()						" Vundle setup
+Bundle 'gmarik/vundle'
+"Bundle 'ctrlp.vim'
+"Bundle 'fugitive.vim'
+"Bundle 'taglist-plus'
+"Bundle 'neocomplcache'
+filetype plugin indent on				" Required for vundle
+
+" == Syntastic customizations ==
+"let g:syntastic_c_check_header = 1
+"let g:syntastic_c_auto_refresh_includes = 1
+" let b:syntastic_c_cflags = '-I./includes'
+let g:syntastic_c_include_dirs = [ 'headers', 'includes', 'libft/includes' ]
+let g:syntastic_disabled_filetypes=['o', 'a']
+
+" == Lokaltog customisation ==
+set laststatus=2					" Always show status line
+
+" == Auto .h protect ==
+function! s:insert_gates()
+let getname = substitute(toupper(expand("%:t")), "\\.", "_", "g")
+	execute "normal! i#ifndef " . getname
+	execute "normal! o# define " . getname
+	execute "normal! o"
+	execute "normal! Go#endif /* !" . getname . " */"
+	normal! kk
+endfunction
+autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
+autocmd BufNewFile *.{h,hpp} :3
+
+" == Mapping ==
+nmap <c-x> :w<cr>
+nmap <c-c> :q<cr>
+nmap <c-e> :Exp<cr>
+nmap <c-b> :CtrlPBuffer<cr>
+
+let mapleader="\\"
+"nmap <silent> <leader>ev :edit $HOME/.vimrc<CR>		" Edit vimrc
+"nmap <silent> <leader>sv :source $HOME/.vimrc<CR>		" Source vimrc
+nmap <silent> <leader>ev :edit $HOME/.myvimrc<CR>		" Edit myvimrc
+nmap <silent> <leader>sv :source $HOME/.myvimrc<CR>	" Source myvimrc
 
 
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
+" == Misc ==
+"set showmatch			" Show matching bracket
+"set matchtime=10		" Show matching bracket for 1 second
+
+" == Norme C 42==
+highlight normec42 ctermbg=red ctermfg=white guibg=#592929
+autocmd BufEnter *.{c,cpp,h,hpp} call matchadd ('normec42', '^ ')				"espace au debut
+autocmd BufEnter *.{c,cpp,h,hpp} call matchadd ('normec42', '  \+')				"double espace
+autocmd BufEnter *.{c,cpp,h,hpp} call matchadd ('normec42', ' \t')				"espace suivit de tab
+autocmd BufEnter *.{c,cpp,h,hpp} call matchadd ('normec42', '\t ')				"tab suivit d'espace
+autocmd BufEnter *.{c,cpp,h,hpp} call matchadd ('normec42', '[ \t]\+$')			"tab ou espace a la fin
+autocmd BufEnter *.{c,cpp,h,hpp} call matchadd ('normec42', '\%>80v.\+')		"plus de 80 caracteres
+"autocmd BufEnter *.{c,cpp,h,hpp} call matchadd ('normec42', ',[^ ]')			"virgule sans espace
+
+" == Backups ==
+"if isdirectory($HOME . '/.vim/backup') == 0
+"	:silent !mkdir -p ~/.vim/backup >/dev/null 2>&1
+"endif
+"set backupdir-=.
+"set backupdir+=.
+"set backupdir-=~/
+"set backupdir^=~/.vim/backup/
+"set backup
+
+" == Swap files ==
+"if isdirectory($HOME . '/.vim/swap') == 0
+"	:silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
+"endif
+"set directory=~/.vim/swap//
+"set directory+=.
