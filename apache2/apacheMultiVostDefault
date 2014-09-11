@@ -1,22 +1,66 @@
-# Apache doit écouter sur le port 80
-Listen 80
-
-# Toutes les adresses IP doivent répondre aux requêtes sur les
-# serveurs virtuels
-NameVirtualHost *:80
-
 <VirtualHost *:80>
-DocumentRoot /www/example.com
-ServerName www.example1.com
+	ServerAdmin webmaster@localhost
 
-# Autres directives ici
+	ServerName tfrere.fr
+	DocumentRoot /var/www/tfrere.fr/www
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory /var/www/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
 
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 
 <VirtualHost *:80>
-DocumentRoot /www/example.org
-ServerName www.example2.org
-
-# Autres directives ici
-
+	DocumentRoot /var/www/tfrere.fr/www/cloud
+	ServerName cloud.tfrere.fr
 </VirtualHost>
+
+<VirtualHost *:80>
+	DocumentRoot /var/www/tfrere.fr/www/music
+	ServerName music.tfrere.fr
+</VirtualHost>
+
+#<VirtualHost 91.121.5.220:443>
+#	ServerName cloud.tfrere.fr
+#	DocumentRoot /var/www/tfrere.fr/www/cloud
+
+#	SSLEngine on
+#	SSLCertificateFile /etc/apache2/ssl/owncloud.crt
+#	SSLCertificateKeyFile /etc/apache2/ssl/owncloud.ey
+#</VirtualHost>
+
+<Directory /var/www/tfrere.fr/www/music>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	allow from all
+</Directory>
+
+<Directory /var/www/tfrere.fr/www/cloud>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	allow from all
+</Directory>
