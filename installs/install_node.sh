@@ -8,4 +8,4 @@ npm install -g grunt-cli
 npm install -g bower
 npm install -g gulp
 npm install -g mongodb
-npm install -g moongoose
+npm install -g mongoose
