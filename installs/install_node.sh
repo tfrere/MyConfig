@@ -1,17 +1,8 @@
 printf "\n[Install Node && NPM]...\n"
 
-# mkdir ~/node-latest-install
-# cd ~/node-latest-install
-# sudo curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
-# ./configure --prefix=~/local
-# sudo make install
-# sudo curl https://www.npmjs.org/install.sh | sh
-# rm -rf ~/node-latest-install
-
-
 apt-get install curl
 curl -sL https://deb.nodesource.com/setup | bash
-apt-get install nodejs nodejs-legacy
+apt-get install nodejs
 
 npm install -g grunt-cli
 npm install -g bower
