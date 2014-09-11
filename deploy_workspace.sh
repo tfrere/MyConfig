@@ -21,6 +21,7 @@ git config --global user.email tfrere@student.42.fr
 
 groupadd wheel
 useradd wheel tfrere
+echo "------- Password for tfrere --------"
 passwd tfrere
 mkdir /home/wheel
 mkdir /home/wheel/tfrere
