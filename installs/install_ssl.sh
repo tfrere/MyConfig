@@ -17,7 +17,7 @@ if [ $# != 0 ]
 		echo "---- Correctly created $i.key ! ----"
 	done
 
-	else echo "error: invalid name argument"
+	else echo "error: arguments must be valid name"
 
 fi
 

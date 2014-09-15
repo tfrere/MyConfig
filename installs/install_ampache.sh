@@ -7,10 +7,10 @@ mv ampache*/* ./
 mysql -u root -p IuHW6m51 -e "
 CREATE DATABASE ampacheDB;
 
-CREATE USER ampache_user;
- SET PASSWORD FOR ampache_user = PASSWORD("yourpassword");
+CREATE USER admin;
+ SET PASSWORD FOR admin = PASSWORD("poupi57160");
 
-GRANT ALL PRIVILEGES ON ampacheDB.* TO ampache_user@localhost IDENTIFIED BY ‘yourpassword’
+GRANT ALL PRIVILEGES ON ampacheDB.* TO admin@localhost IDENTIFIED BY ‘poupi57160’
  FLUSH PRIVILEGES;
  "
 
