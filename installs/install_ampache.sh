@@ -14,7 +14,7 @@ GRANT ALL PRIVILEGES ON ampacheDB.* TO admin@localhost IDENTIFIED BY ‘poupi571
  FLUSH PRIVILEGES;
  "
 
-
+a2enmod proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 
 # List of filetypes to transcode
 
