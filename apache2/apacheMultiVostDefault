@@ -33,8 +33,20 @@
 </VirtualHost>
 
 <VirtualHost *:80>
-	DocumentRoot /var/www/tfrere.fr/www/cloud
-	ServerName cloud.tfrere.fr
+	ProxyPreserveHost On
+	ServerName ide.tfrere.fr
+	ProxyPass /  http://localhost:3131/
+	ProxyPassReverse / http://localhost:3131/
+</VirtualHost>
+
+<VirtualHost *:80>
+	DocumentRoot /var/www/tfrere.fr/www/ideas/src
+	ServerName ideas.tfrere.fr
+</VirtualHost>
+
+<VirtualHost *:80>
+	DocumentRoot /var/www/tfrere.fr/www/peon/public
+	ServerName peon.tfrere.fr
 </VirtualHost>
 
 <VirtualHost *:80>
@@ -51,7 +63,28 @@
 #	SSLCertificateKeyFile /etc/apache2/ssl/owncloud.ey
 #</VirtualHost>
 
+<Directory /var/www/tfrere.fr/www/ideas>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	allow from all
+</Directory>
+
 <Directory /var/www/tfrere.fr/www/music>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	allow from all
+</Directory>
+
+<Directory /var/www/tfrere.fr/www/peon>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	allow from all
+</Directory>
+
+<Directory /var/www/tfrere.fr/www/ide>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
