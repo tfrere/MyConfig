@@ -15,10 +15,10 @@
 	mkdir /var/www/cloud
 	cd /var/www/
 	mkdir box
-	git clone https://gihub.com/tfrere/portfolio.git tfrere/
-	git clone https://gihub.com/tfrere/peon.git peon/
-	git clone https://gihub.com/thomaswinckell/angularfire-white-board.git dashboard/
-	git clone https://gihub.com/thomaswinckell/js-music-client-server.git music/
+	git clone http://gihtub.com/tfrere/portfolio.git tfrere/
+	git clone http://gihtub.com/tfrere/peon.git peon/
+	git clone http://gihtub.com/thomaswinckell/angularfire-white-board.git dashboard/
+	git clone http://gihtub.com/thomaswinckell/js-music-client-server.git music/
 
 	a2enmod proxy proxy_ajp proxy_http rewrite deflate headers
 
