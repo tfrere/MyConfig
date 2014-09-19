@@ -16,7 +16,6 @@
 		Allow from all
 	</Directory>
 
-
 	ErrorLog ${APACHE_LOG_DIR}/error.log
 
 	# Possible values include: debug, info, notice, warn, error, crit,
@@ -46,6 +45,11 @@
 <VirtualHost *:80>
 	DocumentRoot /var/www/music/client
 	ServerName music.tfrere.fr
+</VirtualHost>
+
+<VirtualHost *:80>
+	DocumentRoot /var/www/owncloud
+	ServerName cloud.tfrere.fr
 </VirtualHost>
 
 #<VirtualHost 91.121.5.220:443>
