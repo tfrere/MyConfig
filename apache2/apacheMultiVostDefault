@@ -71,7 +71,7 @@
 	allow from all
 </Directory>
 
-<Directory /var/www/peon>
+<Directory /var/www/peon/public>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
@@ -85,7 +85,7 @@
 	allow from all
 </Directory>
 
-<Directory /var/www/cloud>
+<Directory /var/www/owncloud>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
