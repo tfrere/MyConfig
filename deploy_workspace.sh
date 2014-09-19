@@ -5,10 +5,8 @@
 
 	printf "\n[Installs]...\n"
 
-	apt-get install curl
-	apt-get install sudo
-	apt-get install htop
-	apt-get install vim
+	apt-get install curl sudo htop python build-essential libssl-dev git-core
+
 
 	printf "\n[Base config]...\n"
 

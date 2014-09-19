@@ -2,7 +2,7 @@
 	ServerAdmin ecrire@tfrere.fr
 
 	ServerName tfrere.fr
-	DocumentRoot /var/www/tfrere.fr/www
+	DocumentRoot /var/www/tfrere
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
@@ -34,7 +34,7 @@
 </VirtualHost>
 
 <VirtualHost *:80>
-	DocumentRoot /var/www/dashboard
+	DocumentRoot /var/www/dashboard/src/
 	ServerName whiteboard.tfrere.fr
 </VirtualHost>
 
@@ -44,7 +44,7 @@
 </VirtualHost>
 
 <VirtualHost *:80>
-	DocumentRoot /var/music
+	DocumentRoot /var/www/music/client
 	ServerName music.tfrere.fr
 </VirtualHost>
 
