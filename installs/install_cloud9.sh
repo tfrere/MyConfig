@@ -1,3 +1,6 @@
+
+a2enmod proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
+
 git clone https://github.com/ajaxorg/cloud9.git ide
 cd ide
 
