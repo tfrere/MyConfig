@@ -1,17 +1,11 @@
 <VirtualHost *:80>
-	ServerAdmin webmaster@localhost
+	ServerAdmin ecrire@tfrere.fr
 
 	ServerName tfrere.fr
 	DocumentRoot /var/www/tfrere.fr/www
 	<Directory />
 		Options FollowSymLinks
 		AllowOverride None
-	</Directory>
-	<Directory /var/www/>
-		Options Indexes FollowSymLinks MultiViews
-		AllowOverride None
-		Order allow,deny
-		allow from all
 	</Directory>
 
 	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
@@ -34,64 +28,64 @@
 
 <VirtualHost *:80>
 	ProxyPreserveHost On
-	ServerName ide.tfrere.fr
+	ServerName box.tfrere.fr
 	ProxyPass /  http://localhost:3131/
 	ProxyPassReverse / http://localhost:3131/
 </VirtualHost>
 
 <VirtualHost *:80>
-	DocumentRoot /var/www/tfrere.fr/www/ideas/src
-	ServerName ideas.tfrere.fr
+	DocumentRoot /var/www/dashboard
+	ServerName whiteboard.tfrere.fr
 </VirtualHost>
 
 <VirtualHost *:80>
-	DocumentRoot /var/www/tfrere.fr/www/peon/public
+	DocumentRoot /var/www/peon/public
 	ServerName peon.tfrere.fr
 </VirtualHost>
 
 <VirtualHost *:80>
-	DocumentRoot /var/www/tfrere.fr/www/music
+	DocumentRoot /var/music
 	ServerName music.tfrere.fr
 </VirtualHost>
 
 #<VirtualHost 91.121.5.220:443>
 #	ServerName cloud.tfrere.fr
-#	DocumentRoot /var/www/tfrere.fr/www/cloud
+#	DocumentRoot /var/www/owncloud
 
 #	SSLEngine on
 #	SSLCertificateFile /etc/apache2/ssl/owncloud.crt
 #	SSLCertificateKeyFile /etc/apache2/ssl/owncloud.ey
 #</VirtualHost>
 
-<Directory /var/www/tfrere.fr/www/ideas>
+<Directory /var/www/dashboard>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
 	allow from all
 </Directory>
 
-<Directory /var/www/tfrere.fr/www/music>
+<Directory /var/www/music>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
 	allow from all
 </Directory>
 
-<Directory /var/www/tfrere.fr/www/peon>
+<Directory /var/www/peon>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
 	allow from all
 </Directory>
 
-<Directory /var/www/tfrere.fr/www/ide>
+<Directory /var/www/box>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
 	allow from all
 </Directory>
 
-<Directory /var/www/tfrere.fr/www/cloud>
+<Directory /var/www/cloud>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
 	Order allow,deny
