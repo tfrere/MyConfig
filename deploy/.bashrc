@@ -19,7 +19,7 @@
 
  # Detection
 
-  alias ownip        = 'sh .detection/ownip.sh'
+  alias ownip        = 'sh .bash_lib/ownip.sh'
   alias whichkernel  = 'sh .bash_lib/kernel.sh'
   alias whichdistrib = 'sh .bash_lib/distrib.sh'
   alias grouplist    = 'sh .bash_lib/groupl.sh'
@@ -28,4 +28,3 @@
   alias biggestfiles = 'sh .bash_lib/biggestfiles.sh'
 
 
-export PATH=$PATH:/root/local/bin
