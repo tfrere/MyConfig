@@ -10,14 +10,13 @@
 
 # Git 
 
- alias gstatus = 'git status'
- alias gadd    = 'git add -A'
- alias gpush   = 'git push'
- alias gcommit = 'git commit -m'
+ alias gs = 'git status'
+ alias ga = 'git add -A'
+ alias gp = 'git push'
+ alias gc = 'git commit -m'
+ alias gg = 'git log --decorate --oneline --all --graph'
 
 # BashLib
-
- # Detection
 
   alias ownip        = 'sh .bash_lib/ownip.sh'
   alias whichkernel  = 'sh .bash_lib/kernel.sh'
