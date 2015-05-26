@@ -1,4 +1,5 @@
-apt-get install build-essential libcap-dev xz-utils zip unzip imagemagick strace curl clang-3.4
+#!/bin/bash
+apt-get install curl build-essential libcap-dev xz-utils zip unzip imagemagick strace curl clang-3.4
 
 curl https://install.meteor.com/ | sh
 
