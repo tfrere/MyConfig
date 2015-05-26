@@ -4,9 +4,10 @@
 	cp config/.vimrc ~/
 	cp -rf config/.vim ~/
 
-	source ~/.bashrc
 
 	mkdir ~/.bashlib
 	cp -Rf bashlib/* ~/.bashlib/
+	cp -Rf config ~/.bashlib/
+	. ~/.bashrc
 	
 	printf '\n[Config done]\n'

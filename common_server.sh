@@ -4,7 +4,7 @@
 
 	sudo apt-get update
 	sudo apt-get upgrade
-	sudo apt-get install curl sudo htop python build-essential libssl-dev git-core mongo 
+	sudo apt-get install curl sudo htop python build-essential libssl-dev git-core mongo unzip default-jdk
 
 	 sh tasks/install_lamp.sh
 	 sh tasks/install_node.sh

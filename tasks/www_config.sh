@@ -12,3 +12,5 @@
 
 	cat ../config/apacheVhost > /etc/apache2/sites-available/apacheMultiVostDefault
 
+
+	service apache2 restart
