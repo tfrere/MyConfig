@@ -1,0 +1,2 @@
+
+all comment even multiline in css \/\*[\s\S]+?\*\/
