@@ -14,7 +14,7 @@ services:
     labels:
       - "traefik.backend=web"
       - "traefik.docker.network=web"
-      - "traefik.frontend.rule=Host:coloursinculture.io"
+      - "traefik.frontend.rule=Host:coloursinculture.io,www.coloursinculture.io"
       - "traefik.enable=true"
       - "traefik.default.protocol=http"
       - "traefik.frontend.entryPoints=http,https"

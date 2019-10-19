@@ -12,7 +12,7 @@
 
 # create parents ( - p ) then create work into /home/USER
 # then create traefik, portfolio and coloursinculture folder
-mkdir -p $HOME/work/{traefik,portfolio,coloursinculture,designsystemintro,cssdoc}
+mkdir -p $HOME/work/{traefik,portfolio,coloursinculture,designsystemintro,cssdoc, bloodriskmap}
 
 # traefik
 

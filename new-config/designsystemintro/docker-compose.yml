@@ -10,7 +10,7 @@ services:
       - discovery.type=single-node
       - cluster.name=tfrere
     volumes:
-      - ./design-system-intro/dist:/usr/share/nginx/html:ro
+      - ./design-system-intro:/usr/share/nginx/html:ro
     labels:
       - "traefik.backend=web"
       - "traefik.docker.network=web"

@@ -10,11 +10,11 @@ services:
       - discovery.type=single-node
       - cluster.name=tfrere
     volumes:
-      - ./designGenerator/build:/usr/share/nginx/html:ro
+      - ./portfolio/build:/usr/share/nginx/html:ro
     labels:
       - "traefik.backend=web"
       - "traefik.docker.network=web"
-      - "traefik.frontend.rule=Host:tfrere.fr"
+      - "traefik.frontend.rule=Host:tfrere.fr,www.tfrere.fr"
       - "traefik.enable=true"
       - "traefik.default.protocol=http"
       - "traefik.frontend.entryPoints=http,https"
