@@ -10,7 +10,7 @@ services:
       - discovery.type=single-node
       - cluster.name=tfrere
     volumes:
-      - ./bloodriskmap/dist:/usr/share/nginx/html:ro
+      - ./blood-risk-map/dist:/usr/share/nginx/html:ro
     labels:
       - "traefik.backend=web"
       - "traefik.docker.network=web"
