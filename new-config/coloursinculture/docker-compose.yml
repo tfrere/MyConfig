@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  es01-avec:
+    image: nginx:alpine
+    container_name: coloursinculture
+    networks:
+      - web
+    environment:
+      - discovery.type=single-node
+      - cluster.name=tfrere
+    volumes:
+      - ./coloursinculture/dist:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.backend=web"
+      - "traefik.docker.network=web"
+      - "traefik.frontend.rule=Host:coloursinculture.io"
+      - "traefik.enable=true"
+      - "traefik.default.protocol=http"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.port=80"
+      - "traefik.frontend.redirect.entryPoint=https"
+
+networks:
+  web:
+    external: true
