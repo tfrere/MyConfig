@@ -35,22 +35,22 @@ apt-get install docker-ce docker-ce-cli containerd.io git
 adduser tfrere
 apt-get install sudo
 
-visudo
-# ajouter les permissions au nouvel utilisateur tfrere
-# user alias specitifactions
-# tfrere  ALL=(ALL:ALL) ALL
-
-# se connecter en tant que tfrere en instanciant un nouveau environement shell
-su - tfrere
-
-sudo apt-get install python3-pip
-
-# --user permet d'installer un package pip pour un utilisateur spécifique // .local
-pip3 install --user setuptools
-pip3 install --user wheel # packages précompilés pip
-pip3 install --user docker-compose
-
-# ajout d'un groupe d'utilisateurs
-sudo groupadd docker
-# modifie un user en l'ajoutant ( -a ) à un groupe ( -G )
-sudo usermod -aG docker tfrere
+# visudo
+# # ajouter les permissions au nouvel utilisateur tfrere
+# # user alias specitifactions
+# # tfrere  ALL=(ALL:ALL) ALL
+#
+# # se connecter en tant que tfrere en instanciant un nouveau environement shell
+# su - tfrere
+#
+# sudo apt-get install python3-pip
+#
+# # --user permet d'installer un package pip pour un utilisateur spécifique // .local
+# pip3 install --user setuptools
+# pip3 install --user wheel # packages précompilés pip
+# pip3 install --user docker-compose
+#
+# # ajout d'un groupe d'utilisateurs
+# sudo groupadd docker
+# # modifie un user en l'ajoutant ( -a ) à un groupe ( -G )
+# sudo usermod -aG docker tfrere
